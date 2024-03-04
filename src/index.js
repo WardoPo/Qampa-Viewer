@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import LoginPage from './pages/login.tsx';
 import GalleryPage from './pages/gallery.tsx';
+import AlbumPage from './pages/album.tsx';
 
 import './index.css'
 
@@ -15,6 +16,10 @@ const Router = createBrowserRouter([
   {
     path: "/gallery",
     element: <GalleryPage/>
+  },
+  {
+    path: "/album/:id",
+    element: <AlbumPage/>
   }
 ])
 

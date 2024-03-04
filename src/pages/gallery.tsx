@@ -19,7 +19,7 @@ function GalleryPage() {
 
     return (
         <div className="bg-dark">
-            <Container fluid className="p-5 mh-100 overflow-hidden">
+            <Container fluid className="p-5">
                 <Albums/>
             </Container>
         </div>

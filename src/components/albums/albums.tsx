@@ -62,7 +62,7 @@ function Albums() {
                 {albums && albums.map((album) => {
                     return (
                         <Col>
-                            <Album photo={album.coverPhotoBaseUrl} title={album.title} count={album.mediaItemsCount} />
+                            <Album id={album.id} photo={album.coverPhotoBaseUrl} title={album.title} count={album.mediaItemsCount} />
                         </Col>
                     )
                 })}
