@@ -1,0 +1,15 @@
+.album{
+    transition: 100ms ease-in-out;
+}
+
+.album:hover{
+    scale: 1.1;
+}
+
+.album h1{
+    font-size: 0.875rem;
+}
+
+.album p{
+    font-size: 0.75rem;
+}
