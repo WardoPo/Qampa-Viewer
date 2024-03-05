@@ -1,0 +1,9 @@
+.mediaItem {
+    transition: border 100ms ease-in-out;
+    border: 0.25em transparent solid;
+}
+
+.mediaItem:hover {
+    border: 0.25em white solid;
+    border-radius: 1em;
+}

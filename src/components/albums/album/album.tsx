@@ -8,6 +8,8 @@ function Album({ id, photo, title, count }) {
     function goToAlbum() {
         let baseURL = new URL(window.location.href);
         baseURL.pathname = `/album/${id}`;
+        baseURL.hash = '';
+        baseURL.searchParams.set('title',title);
 
         window.location.assign(baseURL);
     }

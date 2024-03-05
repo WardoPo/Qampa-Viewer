@@ -1,0 +1,10 @@
+.sidebar{
+    position: fixed;
+    box-shadow: 0px 2px 10px 5px black;
+    min-width: 50px;
+    max-width: 50px;
+}
+
+.sidebar + *{
+    margin-left: 50px;
+}

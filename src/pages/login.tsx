@@ -5,7 +5,7 @@ import LoginWithGoogle from "../components/login_google.tsx";
 
 function LoginPage() {
     return (
-        <div className="bg-dark d-flex h-100 p-5">
+        <main className="bg-dark d-flex h-100 p-5">
             <Container fluid="lg" className="d-flex justify-content-center align-items-center h-100">
                 <Row className="w-100 bg-light rounded p-5">
                     <Col>
@@ -18,7 +18,7 @@ function LoginPage() {
                     </Col>
                 </Row>
             </Container>
-        </div>
+        </main>
     )
 }
 

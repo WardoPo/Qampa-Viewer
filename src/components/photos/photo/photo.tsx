@@ -1,14 +1,16 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 
-function Photo({src,description="",metadata}){
+import './photo.css'
 
-    const lineHeight = 343;
+function Photo({ src, description = "", gridInfo = {} }) {
 
-    return(
-        <span>
-            <Image src={`${src}=w2048-h${lineHeight}`}></Image>
-        </span>
+    let maxRoundedHeight = isNaN(Math.round(gridInfo.maxHeight)) ? "500" : Math.round(gridInfo.maxHeight)
+
+    return (
+        <div className="d-inline-block p-1" style={{ maxHeight: Math.floor(gridInfo.maxHeight), aspectRatio: gridInfo.aspect_ratio }}>
+            <Image src={`${src}=w2048-h${maxRoundedHeight}`} className="mediaItem object-fit-cover mw-100"></Image>
+        </div>
     )
 }
 
