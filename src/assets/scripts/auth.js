@@ -1,6 +1,6 @@
 import { config } from "../../config/oauth2";
 
-function getGoogleAuthURL(redirect_path,immediate=false) {
+function getGoogleAuthURL(redirect_path,noUI=false) {
 
     let authURL = new URL(config.auth_uri);
 
@@ -12,7 +12,7 @@ function getGoogleAuthURL(redirect_path,immediate=false) {
     authURL.searchParams.set('redirect_uri', redirect_uri.href)
     authURL.searchParams.set('response_type', 'token')
     authURL.searchParams.set('scope', config.scopes.join(' '))
-    authURL.searchParams.set('immediate', immediate)
+    noUI && authURL.searchParams.set('prompt', 'none')
 
     return authURL
 

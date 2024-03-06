@@ -116,8 +116,8 @@ function Photos() {
             setGetMediaItems(false);
         }
 
-        if(JSON.stringify(albumContext.mediaDisplayInfo.mediaItems) != JSON.stringify(mediaItems)){
-            albumContext.updateAlbumContext({mediaItems:mediaItems,index:albumContext.mediaDisplayInfo.index});
+        if (JSON.stringify(albumContext.mediaDisplayInfo.mediaItems) != JSON.stringify(mediaItems)) {
+            albumContext.updateAlbumContext({ mediaItems: mediaItems, index: albumContext.mediaDisplayInfo.index, active: albumContext.mediaDisplayInfo.active });
         }
 
     })
@@ -130,13 +130,22 @@ function Photos() {
 
     }
 
+    function startMediaDisplay(index = 0) {
+        albumContext.updateAlbumContext({ mediaItems: albumContext.mediaDisplayInfo.mediaItems, index: index, active: true })
+    }
+
     return (
         <>
-            <h1 className="text-light mb-5">{albumTitle}</h1>
+            <div className="d-flex justify-content-between text-light mb-5">
+                <h1>{albumTitle}</h1>
+                <span className="material-symbols-outlined" onClick={() => startMediaDisplay()}>
+                    play_arrow
+                </span>
+            </div>
             <div id="photoContainer" className="min-vh-100 text-center">
-                {mediaItems.map((mediaItem) => {
+                {mediaItems.map((mediaItem,index) => {
                     return (
-                        <Photo src={mediaItem.baseUrl} description={mediaItem.description} gridInfo={mediaItem.gridInfo} key={mediaItem.id} />
+                        <Photo src={mediaItem.baseUrl} description={mediaItem.description} gridInfo={mediaItem.gridInfo} key={mediaItem.id} onClick={()=>{startMediaDisplay(index)}}/>
                     )
                 })}
             </div>

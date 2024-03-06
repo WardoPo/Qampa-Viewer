@@ -10,7 +10,7 @@ function AlbumPage() {
 
     localStorage.setItem('mediaItems_nextPageToken', "");
 
-    const [albumContext, setAlbumContext] = useState({ mediaItems: [], index: 0 })
+    const [albumContext, setAlbumContext] = useState({ mediaItems: [], index: 0, active: false })
     let albumContextValue = {mediaDisplayInfo:albumContext,updateAlbumContext:setAlbumContext}
 
     return (
