@@ -100,7 +100,7 @@ function Photos() {
 
                     localStorage.setItem('mediaItems_nextPageToken', responseBody.nextPageToken ?? "end");
                     newMediaItems = calculateGrid(newMediaItems);
-                    setMediaItems([...mediaItems, ...newMediaItems]);
+                    albumContext.updateAlbumContext({ mediaItems: albumContext.mediaDisplayInfo.mediaItems.length>0 ? [albumContext.mediaDisplayInfo.mediaItems, ...newMediaItems] : newMediaItems, index: albumContext.mediaDisplayInfo.index, active: albumContext.mediaDisplayInfo.active })
                     break;
                 case 401:
                     window.location.assign(getGoogleAuthURL(window.location.pathname, true))
@@ -115,11 +115,6 @@ function Photos() {
             fecthMediaItems();
             setGetMediaItems(false);
         }
-
-        if (JSON.stringify(albumContext.mediaDisplayInfo.mediaItems) != JSON.stringify(mediaItems)) {
-            albumContext.updateAlbumContext({ mediaItems: mediaItems, index: albumContext.mediaDisplayInfo.index, active: albumContext.mediaDisplayInfo.active });
-        }
-
     })
 
     window.onscrollend = () => {
@@ -143,9 +138,9 @@ function Photos() {
                 </span>
             </div>
             <div id="photoContainer" className="min-vh-100 text-center">
-                {mediaItems.map((mediaItem,index) => {
+                {albumContext.mediaDisplayInfo.mediaItems.map((mediaItem, index) => {
                     return (
-                        <Photo src={mediaItem.baseUrl} description={mediaItem.description} gridInfo={mediaItem.gridInfo} key={mediaItem.id} onClick={()=>{startMediaDisplay(index)}}/>
+                        <Photo src={mediaItem.baseUrl} description={mediaItem.description} gridInfo={mediaItem.gridInfo} key={mediaItem.id} onClick={() => { startMediaDisplay(index) }} />
                     )
                 })}
             </div>
