@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import Albums from "../components/albums/albums.tsx";
-import { Container } from "react-bootstrap";
+
 import SideBar from "../components/sidebar/sidebar.tsx";
+import Albums from "../components/albums/albums.tsx";
 
 function GalleryPage() {
 

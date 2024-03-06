@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import { Col, Row } from "react-bootstrap";
 
 import Album from "./album/album.tsx";
+import getGoogleAuthURL from "../../assets/scripts/auth.js";
 
 function Albums() {
 
@@ -12,6 +12,11 @@ function Albums() {
     useEffect(() => {
 
         async function fetchAlbums() {
+
+            if(localStorage.getItem("albums_nextPageToken") == "end"){
+                console.log("End of Content Reached ~ !")
+                return;
+            }
 
             console.log("Fetching Albums...")
 
@@ -29,15 +34,19 @@ function Albums() {
                 }
             })
 
-            if (response.status == 200) {
-                let responseBody = await response.json()
-                let newAlbums = responseBody.albums ?? [];
+            switch (response.status) {
+                case 200:
+                    let responseBody = await response.json()
+                    let newAlbums = responseBody.albums ?? [];
 
-                localStorage.setItem('albums_nextPageToken', responseBody.nextPageToken ?? "");
+                    localStorage.setItem('albums_nextPageToken', responseBody.nextPageToken ?? "end");
 
-                setAlbums([...albums, ...newAlbums]);
-            } else {
-                console.log(response);
+                    setAlbums([...albums, ...newAlbums]);
+                    break;
+                case 401:
+                    window.location.assign(getGoogleAuthURL(window.location.pathname, true))
+                default:
+                    console.error(response)
             }
 
         }
@@ -48,9 +57,9 @@ function Albums() {
         }
     })
 
-    window.onscrollend = () =>{
+    window.onscrollend = () => {
 
-        if(document.getElementById('albumContainer')?.lastElementChild?.getBoundingClientRect().top <= window.innerHeight && !getAlbums){
+        if (document.getElementById('albumContainer')?.lastElementChild?.getBoundingClientRect().top <= window.innerHeight && !getAlbums) {
             setGetAlbums(true);
         }
 

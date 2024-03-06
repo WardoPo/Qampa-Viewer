@@ -2,9 +2,47 @@
     position: fixed;
     box-shadow: 0px 2px 10px 5px black;
     min-width: 50px;
-    max-width: 50px;
+
+    transition: 100ms ease-in-out;
+}
+
+.sidebar:hover{
+    min-width: 200px;
+    box-shadow: 0px 2px 200px 100px black;
 }
 
 .sidebar + *{
     margin-left: 50px;
+}
+
+.sidebar img{
+    align-self: center;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.sidebar .menu-container:hover{
+   background-color: var(--bs-light);
+   color: var(--bs-dark);
+}
+
+.icon-container{
+    width: 50px;
+    display: inline-block;
+}
+
+.sidebar .menu-option{
+    position: relative
+}
+
+.sidebar .menu-option > :last-child{
+    position: absolute;
+    top: 50%;
+    translate: 0 -50%;
+    display: none;
+}
+
+.sidebar:hover .menu-option :last-child{
+    display: inline;
+    width: max-content;
 }

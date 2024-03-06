@@ -1,0 +1,65 @@
+.display{
+    display: none;
+
+    width: 100vw;
+    height: 100vh;
+    max-width:100%;
+
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+
+    z-index: 2;
+
+    --animation-duration: 5s;
+    --animation-delay: 5s;
+}
+
+.display.active{
+    background-color: rgba(0, 0, 0, 0.95);
+    display: flex;
+}
+
+.display > img{
+    position: absolute;
+    top:50%;
+    left:50%;
+    translate: -50% -50%;
+
+    min-height: 100%;
+    width: auto;
+}
+
+.display .current{
+    opacity: 1;
+    animation: currentOut var(--animation-duration) var(--animation-delay) forwards;
+}
+
+.display .following{
+    opacity: 0;
+    animation: followingIn var(--animation-duration) var(--animation-delay) forwards;
+}
+
+@keyframes currentOut {
+    from {
+        translate: -50% -50%;
+        opacity: 1;
+    }
+    to {
+        translate: -100% -50%;
+        opacity: 0;
+    }
+}
+
+@keyframes followingIn {
+    from {
+        translate: 100% -50%;
+        opacity: 0;
+    }
+    to {
+        translate: -50% -50%;
+        opacity: 1;
+    }
+}
+
