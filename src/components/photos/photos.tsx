@@ -100,7 +100,7 @@ function Photos() {
 
                     localStorage.setItem('mediaItems_nextPageToken', responseBody.nextPageToken ?? "end");
                     newMediaItems = calculateGrid(newMediaItems);
-                    albumContext.updateAlbumContext({ mediaItems: albumContext.mediaDisplayInfo.mediaItems.length>0 ? [albumContext.mediaDisplayInfo.mediaItems, ...newMediaItems] : newMediaItems, index: albumContext.mediaDisplayInfo.index, active: albumContext.mediaDisplayInfo.active })
+                    albumContext.updateAlbumContext({ mediaItems: albumContext.mediaDisplayInfo.mediaItems.length > 0 ? [...albumContext.mediaDisplayInfo.mediaItems, ...newMediaItems] : newMediaItems, index: albumContext.mediaDisplayInfo.index, active: albumContext.mediaDisplayInfo.active })
                     break;
                 case 401:
                     window.location.assign(getGoogleAuthURL(window.location.pathname, true))
@@ -133,14 +133,14 @@ function Photos() {
         <>
             <div className="d-flex justify-content-between text-light mb-5">
                 <h1>{albumTitle}</h1>
-                <span className="material-symbols-outlined" onClick={() => startMediaDisplay()}>
+                <span className="material-symbols-outlined" onClick={() => startMediaDisplay()} onKeyDown={(e) => { if(e.key == 'Enter'){return startMediaDisplay()}}} tabIndex={0} autoFocus>
                     play_arrow
                 </span>
             </div>
             <div id="photoContainer" className="min-vh-100 text-center">
                 {albumContext.mediaDisplayInfo.mediaItems.map((mediaItem, index) => {
                     return (
-                        <Photo src={mediaItem.baseUrl} description={mediaItem.description} gridInfo={mediaItem.gridInfo} key={mediaItem.id} onClick={() => { startMediaDisplay(index) }} />
+                        <Photo src={mediaItem.baseUrl} description={mediaItem.description} gridInfo={mediaItem.gridInfo} key={mediaItem.id} onClick={() => { startMediaDisplay(index) }} onKeyDown={(e) => { if(e.key == 'Enter'){return startMediaDisplay()}}}/>
                     )
                 })}
             </div>

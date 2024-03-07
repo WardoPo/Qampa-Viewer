@@ -7,14 +7,8 @@ import './mediadisplay.css'
 
 function MediaDisplay() {
 
-    const [avaliableHeight, setAvaliableHeight] = useState(0)
+    const avaliableHeight = window.innerHeight
     const albumContext = useContext(AlbumContext)
-
-    useEffect(() => {
-        if (!avaliableHeight) {
-            setAvaliableHeight(document.getElementById('mediaItemDisplay')?.getBoundingClientRect().height)
-        }
-    })
 
     function switchImages() {
 
@@ -50,8 +44,8 @@ function MediaDisplay() {
 
     return (
         <div className={`display ${albumContext.mediaDisplayInfo.active && "active"}`} id="mediaItemDisplay">
-            <div className="text-light m-5">
-                <span className="material-symbols-outlined" onClick={stopMediaDisplay}>
+            <div className="text-light m-5 close-icon">
+                <span className="material-symbols-outlined" onClick={stopMediaDisplay} onKeyDown={stopMediaDisplay} tabIndex={1}>
                     close
                 </span>
             </div>

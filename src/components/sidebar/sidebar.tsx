@@ -26,7 +26,7 @@ function SideBar() {
         <div className="sidebar d-flex flex-column justify-content-between bg-dark text-light vh-100 px-1 py-5">
             <Image fluid roundedCircle src={JSON.parse(localStorage.getItem('userInfo'))?.picture} className="object-fit-contain"></Image>
             <div className="menu-container">
-                <div className="menu-option py-2" onClick={goToAlbums}>
+                <div className="menu-option py-2" onClick={goToAlbums} tabIndex={0}>
                     <div className="icon-container text-center">
                         <span className="material-symbols-outlined">
                             photo_album
@@ -37,7 +37,7 @@ function SideBar() {
                 </div>
             </div>
             <div className="menu-container text-danger">
-                <div className="menu-option py-2" onClick={logout}>
+                <div className="menu-option py-2" onClick={logout} tabIndex={0}>
                     <div className="icon-container text-center">
                         <span className="material-symbols-outlined">
                             logout
