@@ -7,6 +7,7 @@ import GalleryPage from './pages/gallery.tsx';
 import AlbumPage from './pages/album.tsx';
 
 import './index.css'
+import './assets/styles/qampa.css'
 
 const Router = createBrowserRouter([
   {

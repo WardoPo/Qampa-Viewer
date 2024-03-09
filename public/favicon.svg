@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+	<title>Viewer</title>
+	<style>
+		.s0 { fill: #FF5F6A }
+		@media ( prefers-color-scheme: dark ) {
+			.s0 {
+				fill: #vFFABB0;
+			}
+		} 
+	</style>
+	<path id="Layer" class="s0" d="m492 472.7v-418.7h-471v418.7h369.6v-317.3h-268.2v215.9h166.8v-114.5h-65.4v49.1h-36v-85.1h137.4v186.4h-238.8v-287.8h340.2v353.3z"/>
+</svg>
