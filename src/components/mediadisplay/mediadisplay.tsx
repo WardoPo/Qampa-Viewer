@@ -15,11 +15,8 @@ function MediaDisplay() {
         let currentMediaItem = document.getElementById('currentMediaItem')
         let followingMediaItem = document.getElementById('followingMediaItem')
 
-        currentMediaItem?.classList.add("d-none");
-        currentMediaItem?.classList.remove("current");
-
         followingMediaItem?.classList.remove("following");
-
+        currentMediaItem?.classList.remove("current");
         //HACK:
         currentMediaItem?.getBoundingClientRect()
         followingMediaItem?.getBoundingClientRect()
@@ -31,8 +28,6 @@ function MediaDisplay() {
         }
 
         followingMediaItem?.classList.add("following");
-
-        currentMediaItem?.classList.remove("d-none");
         currentMediaItem?.classList.add("current");
 
         //TODO: Scroll background album to have the picture in focus and on the top line.
